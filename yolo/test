@@ -1,1 +1,19 @@
+from ultralytics import YOLO
+from google.colab.patches import cv2_imshow
+import cv2
+
+# Încărcăm modelul
+model = YOLO("yolo11n.pt")
+
+# Citim imaginea
+img = cv2.imread("dog.jpg")
+
+# Detectăm obiectele
+results = model(img)
+
+# Desenăm rezultatele
+annotated = results[0].plot()
+
+# Afișăm imaginea în Google Colab
+cv2_imshow(annotated)
 
